@@ -53,6 +53,7 @@ main h4 {
 }
 
 main .cards {
+    margin-left: 200px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 
