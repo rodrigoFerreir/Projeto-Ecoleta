@@ -29,7 +29,7 @@
 #page-home a{
     display: flex;
 
-    color: var(--title--color);
+    color: var(--title-color);
     font-weight: 700;
 }
 
