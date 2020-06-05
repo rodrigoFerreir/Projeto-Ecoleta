@@ -47,14 +47,21 @@ server.post("/savepoint", (req, res) => {
             return res.send("Erro no cadastro")
         }
         console.log("Cadastrado com sucesso!");
-        return res.render("/create-point", { saved: true });
+        return res.render("create-point.html", {saved : true})
     }
     db.run(query, values, afterInsertData);
 })
 
 server.get("/search", (req, res) => {
-    //pegar os dados da tabela
 
+    const search = req.query.search;
+
+    if(search == ""){
+        //pesquisa vazia
+        return res.render("search-result.html", { total: 0 });
+    }  
+    
+    //pegar os dados da tabela
     function afterReadData(error, rows) {
         if (error) {
             return console.log(error)
@@ -64,7 +71,7 @@ server.get("/search", (req, res) => {
         //mostrar os dados da tabela na pagina da aplicação.
         return res.render("search-result.html", { places: rows, total })
     }
-    db.all(`SELECT * FROM places`, afterReadData);
+    db.all(`SELECT * FROM places WHERE city LIKE '%${search}%'`, afterReadData);
 })
 server.listen(3000, () => {
     console.log("Servidor rodando...")

@@ -60,7 +60,7 @@ db.serialize(() => {
         console.log("Dados deletados com sucesso!")
     }
     
-    //db.run(`DELETE FROM places WHERE id = ?`, [4], afterDeleteData)
+    //db.run(`DELETE FROM places WHERE id = ?`, [9], afterDeleteData)
 
     //ler dados na tabela.
     function afterReadData(error, rows){
